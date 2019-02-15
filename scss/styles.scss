@@ -3,14 +3,15 @@ $body-bgcolor: #fff;
 $base-font: 'Lato', sans-serif;
 $default-text-color: #7F7F7F;
 $nav-text-color: #808080;
-$nav-text-selected: #2A2A2A;
+$nav-text-selected: darken($nav-text-color, 50%);
+$nav-text-hover: darken($nav-text-color, 20%);
 $head-color: #292929;
 $author-color: #2A2A2A;
 $accent-color: #51C3A7;
 $border: 1px solid #D9D9D9;
 $popular-identifier-color: #E4E4E4;
 $icon-color: #797979;
-$icon-color-hover: #858585;
+$icon-color-hover: darken($icon-color, 20%);
 
 
 
@@ -44,6 +45,15 @@ body {
   color: $default-text-color;
 }
 
+body, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+a, a:hover, a:active {
+  text-decoration: none;
+}
+
 div.header {
   @include border(#f0f);
   height: 95px;
@@ -70,13 +80,7 @@ div.account-meta {
   justify-content: flex-end;
   align-items: center;
   padding-right: 20px;
-  img {
-    width: 36px;
-    height: 36px;
-    border: 1px solid $accent-color;
-    border-radius: 50%;
-    padding: 2px;
-  }
+  /* @include border(red); */
   .svgIcon-use {
     /* margin-right: 2px; */
     fill: $icon-color;
@@ -95,6 +99,30 @@ div.account-meta {
     width: 40px;
   }
 }
+div.profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  position: relative;
+  img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $accent-color;
+    border-radius: 50%;
+    padding: 2px;
+  }
+  .photo-trim {
+    width: 44px;
+    height: 40px;
+    border-right: 4px solid #fff;
+    border-left: 4px solid #fff;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    z-index: 100;
+  }
+}
 
 
 div.nav {
@@ -102,10 +130,34 @@ div.nav {
   height: (39px);
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-
+  overflow: auto;
+  ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-content: space-between; */
+  }
+  li {
+    display: inline-block;
+    list-style: none;
+    text-transform: uppercase;
+    font-size: .95em;
+    padding: 0 10px;
+    a {
+      color: $nav-text-color;
+    }
+    a:hover {
+      color: $nav-text-hover;
+    }
+    a.selected {
+      color: $nav-text-selected;
+    }
+  }
 }
+
 div.feature-prime1 {
   @include border(#00f);
   height: 315px;
@@ -171,15 +223,34 @@ body {
   }
 }
 
+@media screen and (min-width: 680px) {
+  .feature-panel, .collections {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: $border;
+  }
+  .feature-prime1, .feature-story-panel, .story-list, .side-panel {
+    @include feature-story-layout;
+  }
+}
+
 @media screen and (min-width: 860px) {
+  .feature-panel, .story-panel, .collections {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: $border;
+  }
+  .feature-prime1, .feature-story-panel, .story-list, .side-panel {
+    @include feature-story-layout;
+  }
 
 }
 
 @media screen and (min-width: 1032px) {
-
-}
-
-@media screen and (min-width: 1215px) {
  .container-fluid {
    width: 1500px;
    margin: 0 auto 0 auto;
@@ -191,7 +262,7 @@ body {
    align-items: flex-start;
    border-bottom: $border;
  }
- .feature-prime1, .feature-prime2, .feature-story-panel, .story-ilst, .side-panel {
+ .feature-prime1, .feature-prime2, .feature-story-panel, .story-list, .side-panel {
    @include feature-story-layout;
  }
 
