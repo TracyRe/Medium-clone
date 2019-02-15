@@ -1,0 +1,56 @@
+// VARIABLES
+
+
+
+// MIXINS
+@mixin border($border-color) {
+  border: 1px solid $border-color;
+}
+
+
+
+// STYLES
+div.header {
+  @include border(#f0f);
+}
+div.feature-prime1 {
+  @include border(#00f);
+}
+div.feature-story-panel {
+  @include border(#f00);
+}
+div.feature-prime2 {
+  @include border(#0f0);
+}
+div.story-list {
+  @include border(#ff0);
+}
+div.side-panel {
+  @include border(#0ff);
+}
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 400px) {
+
+}
+
+@media screen and (min-width: 506px) {
+
+}
+
+@media screen and (min-width: 769px) {
+
+}
+
+@media screen and (min-width: 860px) {
+
+}
+
+@media screen and (min-width: 1032px) {
+
+}
+
+@media screen and (min-width: 1215px) {
+
+}

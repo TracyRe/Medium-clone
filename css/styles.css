@@ -1,0 +1,25 @@
+div.header {
+  border: 1px solid #f0f;
+}
+
+div.feature-prime1 {
+  border: 1px solid #00f;
+}
+
+div.feature-story-panel {
+  border: 1px solid #f00;
+}
+
+div.feature-prime2 {
+  border: 1px solid #0f0;
+}
+
+div.story-list {
+  border: 1px solid #ff0;
+}
+
+div.side-panel {
+  border: 1px solid #0ff;
+}
+
+/*# sourceMappingURL=styles.css.map */
