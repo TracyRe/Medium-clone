@@ -1,25 +1,149 @@
+body {
+  font-size: 13px;
+  color: #7F7F7F;
+}
+
 div.header {
   border: 1px solid #f0f;
+  height: 95px;
+}
+
+div.metabar {
+  height: 56px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.logo-medium {
+  display: none;
+}
+
+div.logo-m {
+  display: block;
+}
+
+div.account-meta {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}
+div.account-meta img {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #51C3A7;
+  border-radius: 50%;
+  padding: 2px;
+}
+div.account-meta .svgIcon-use {
+  /* margin-right: 2px; */
+  fill: #797979;
+}
+div.account-meta .svgIcon-use:hover {
+  fill: #858585;
+}
+div.account-meta .bookmark {
+  display: none;
+}
+div.account-meta .search, div.account-meta .notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 40px;
+}
+
+div.nav {
+  border: 1px solid purple;
+  height: 39px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 div.feature-prime1 {
   border: 1px solid #00f;
+  height: 315px;
 }
 
 div.feature-story-panel {
   border: 1px solid #f00;
+  height: 391px;
 }
 
 div.feature-prime2 {
   border: 1px solid #0f0;
+  display: none;
+}
+
+div.see-featured p {
+  color: #51C3A7;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 div.story-list {
   border: 1px solid #ff0;
+  height: 1800px;
+}
+
+div.collections {
+  border: 1px solid #0f0;
+  height: 410px;
 }
 
 div.side-panel {
   border: 1px solid #0ff;
+}
+
+body {
+  background: #fff;
+}
+
+div {
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  div.logo-medium {
+    display: block;
+  }
+
+  div.logo-m {
+    display: none;
+  }
+
+  div.account-meta div.bookmark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 40px;
+  }
+}
+@media screen and (min-width: 1215px) {
+  .container-fluid {
+    width: 1500px;
+    margin: 0 auto 0 auto;
+  }
+
+  .feature-panel, .story-panel, .collections {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #D9D9D9;
+  }
+
+  .feature-prime1, .feature-prime2, .feature-story-panel, .story-ilst, .side-panel {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
