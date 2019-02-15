@@ -4,9 +4,9 @@ $base-font: 'Lato', sans-serif;
 $default-text-color: #7F7F7F;
 $nav-text-color: #808080;
 $nav-text-selected: darken($nav-text-color, 50%);
-$nav-text-hover: darken($nav-text-color, 20%);
+$nav-text-hover: darken($nav-text-color, 30%);
 $head-color: #292929;
-$author-color: #2A2A2A;
+$author-color: darken($default-text-color, 50%);
 $accent-color: #51C3A7;
 $border: 1px solid #D9D9D9;
 $popular-identifier-color: #E4E4E4;
@@ -15,16 +15,19 @@ $icon-color-hover: darken($icon-color, 20%);
 
 
 
+
 // MIXINS
+
+// mixin border used for planning initial layout and  trouble-shooting
 @mixin border($border-color) {
   border: 1px solid $border-color;
 }
 
-@mixin h1($font-size) {
-  font {
+@mixin title($size) {
+  font: {
     family: $base-font;
     weight: 700;
-    size: $font-size;
+    size: $size;
   }
   color: $head-color;
 }
@@ -38,9 +41,9 @@ $icon-color-hover: darken($icon-color, 20%);
 
 
 
-
 // STYLES
 body {
+  background: $body-bgcolor;
   font-size: 13px;
   color: $default-text-color;
 }
@@ -50,12 +53,37 @@ body, p, ul, li {
   padding: 0;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+div {
+  width: 100%;
+}
+
+p {
+  line-height: 160%;
+  margin-top: 1rem;
+}
+
 a, a:hover, a:active {
   text-decoration: none;
 }
 
+h1 {
+  line-height: 130%;
+  margin-bottom: 0;
+}
+
+.svgIcon-use {
+  fill: $icon-color;
+}
+.svgIcon-use:hover {
+  fill: $icon-color-hover;
+}
+
 div.header {
-  @include border(#f0f);
   height: 95px;
 }
 
@@ -80,14 +108,6 @@ div.account-meta {
   justify-content: flex-end;
   align-items: center;
   padding-right: 20px;
-  /* @include border(red); */
-  .svgIcon-use {
-    /* margin-right: 2px; */
-    fill: $icon-color;
-  }
-  .svgIcon-use:hover {
-    fill: $icon-color-hover;
-  }
   .bookmark {
     display: none;
   }
@@ -126,8 +146,7 @@ div.profile-photo {
 
 
 div.nav {
-  @include border(purple);
-  height: (39px);
+  height: 39px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -158,16 +177,47 @@ div.nav {
   }
 }
 
-div.feature-prime1 {
-  @include border(#00f);
-  height: 315px;
+.author {
+color: $author-color;
+margin-top: 1.5rem;
 }
-div.feature-story-panel {
-  @include border(#f00);
-  height: 391px;
+.updated {
+  margin-top: 0;
+  .svgIcon-use {
+    position: relative;
+    top: 3px;
+  }
 }
-div.feature-prime2 {
-  @include border(#0f0);
+
+.feature-prime1, .feature-prime2, {
+  h1 {
+    @include title(2.15rem);
+  }
+}
+
+.feature-story{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  img {
+    width: 80px;
+    height: 80px;
+    margin-left: 20px;
+    margin-right: 0;
+  }
+  h2 {
+    @include title(1.5rem);
+    margin-top: 0;
+  }
+  .bookmark {
+    display: inline;
+    float: right;
+  }
+
+}
+
+.feature-prime2 {
   display: none;
 }
 div.see-featured {
@@ -178,7 +228,7 @@ div.see-featured {
   }
 }
 div.story-list {
-  @include border(#ff0);
+  /* @include border(#ff0); */
   height: 1800px;
 }
 div.collections {
@@ -189,13 +239,11 @@ div.side-panel {
   @include border(#0ff);
 }
 
-body {
-  background: $body-bgcolor;
+.see-featured {
+  border-bottom: $border;
+  width: 100%;
+  text-align: left;
 }
- div {
-   width: 100%;
- }
-
 
 
 // MEDIA QUERIES
@@ -229,10 +277,23 @@ body {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: $border;
   }
   .feature-prime1, .feature-story-panel, .story-list, .side-panel {
     @include feature-story-layout;
+  }
+  .feature-story-panel {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .feature-story {
+    img {
+      order: -100;
+      margin-right: 20px;
+      margin-left: 0;
+    }
+    .bookmark {
+      display: none;
+    }
   }
 }
 
@@ -242,7 +303,6 @@ body {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: $border;
   }
   .feature-prime1, .feature-story-panel, .story-list, .side-panel {
     @include feature-story-layout;
@@ -252,18 +312,23 @@ body {
 
 @media screen and (min-width: 1032px) {
  .container-fluid {
-   width: 1500px;
+   width: 1025px;
    margin: 0 auto 0 auto;
  }
- .feature-panel, .story-panel, .collections {
-   display: flex;
-   flex-flow: row nowrap;
-   justify-content: space-between;
-   align-items: flex-start;
-   border-bottom: $border;
- }
- .feature-prime1, .feature-prime2, .feature-story-panel, .story-list, .side-panel {
-   @include feature-story-layout;
- }
+   .feature-panel, .story-panel, .collections {
+     display: flex;
+     flex-flow: row nowrap;
+     justify-content: space-between;
+     align-items: flex-start;
+   }
+   .feature-prime1, .feature-prime2, .feature-story-panel, .story-list, .side-panel {
+     @include feature-story-layout;
+   }
 
-}
+   .see-featured {
+     border-bottom: $border;
+     width: 100%;
+     text-align: right;
+   }
+
+ }
