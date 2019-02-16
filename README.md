@@ -32,8 +32,8 @@ Since Medium is a dynamic website, the screenshot does not necessarily reflect t
 
 ## Setup/Installation Requirements
 
-* View at https://tracyre.github.io/medium-clone/
-* Clone from https://github.com/TracyRe/medium-clone
+* View at https://tracyre.github.io/Medium-clone/
+* Clone from https://github.com/TracyRe/Medium-clone.git
 * Open in browser of your choice
 * Edit files as desired
 
