@@ -107,6 +107,9 @@ h1 {
 }
 .logo-m {
   display: block;
+  .svgIcon-use {
+    fill: $head-color;
+  }
 }
 
 .account-meta {
@@ -322,6 +325,9 @@ h1 {
 @media screen and (min-width: 769px) {
   .logo-medium {
     display: block;
+    .svgIcon-use {
+      fill: $head-color;
+    }
   }
   .logo-m {
     display: none;
@@ -407,7 +413,6 @@ h1 {
    .blurb {
      .blurb-top {
        background-color: $blurb-color;
-
      }
      .blurb-bg {
        background-color: $blurb-bg-color;

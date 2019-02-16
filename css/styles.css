@@ -64,6 +64,9 @@ h1 {
 .logo-m {
   display: block;
 }
+.logo-m .svgIcon-use {
+  fill: #292929;
+}
 
 .account-meta {
   display: flex;
@@ -275,6 +278,9 @@ h1 {
 @media screen and (min-width: 769px) {
   .logo-medium {
     display: block;
+  }
+  .logo-medium .svgIcon-use {
+    fill: #292929;
   }
 
   .logo-m {
