@@ -12,6 +12,8 @@ $border: 1px solid #D9D9D9;
 $popular-identifier-color: #E4E4E4;
 $icon-color: #797979;
 $icon-color-hover: darken($icon-color, 20%);
+$blurb-color: #D3EFEE;
+$blurb-bg-color: #FAFAFA;
 
 
 
@@ -59,7 +61,7 @@ img {
 }
 
 div {
-  width: 100%;
+  /* width: 100%; */
 }
 
 p {
@@ -83,11 +85,16 @@ h1 {
   fill: $icon-color-hover;
 }
 
-div.header {
+.story-panel {
+  border-top: $border;
+}
+
+/* ------ header styles --------- */
+.header {
   height: 95px;
 }
 
-div.metabar {
+.metabar {
   height: 56px;
   display: flex;
   flex-flow: row nowrap;
@@ -95,14 +102,14 @@ div.metabar {
   align-items: center;
 }
 
-div.logo-medium {
+.logo-medium {
   display: none;
 }
-div.logo-m {
+.logo-m {
   display: block;
 }
 
-div.account-meta {
+.account-meta {
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-end;
@@ -119,7 +126,7 @@ div.account-meta {
     width: 40px;
   }
 }
-div.profile-photo {
+.profile-photo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,8 +151,9 @@ div.profile-photo {
   }
 }
 
+/* ------ nav styles --------- */
 
-div.nav {
+.nav {
   height: 39px;
   display: flex;
   flex-flow: row nowrap;
@@ -177,25 +185,54 @@ div.nav {
   }
 }
 
-.author {
-color: $author-color;
-margin-top: 1.5rem;
-}
-.updated {
-  margin-top: 0;
-  .svgIcon-use {
-    position: relative;
-    top: 3px;
+/* --------- utility link styles -------- */
+.side-panel
+  .utilities {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 300px;
+  border-top: $border;
+  padding-top: .5rem;
+  margin-top: 4rem;
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    /* align-content: space-between; */
+  }
+  li {
+    display: inline-block;
+    list-style: none;
+    padding: 0 10px;
+    line-height: 180%;
+    a {
+      color: $nav-text-color;
+    }
+    a:hover {
+      color: $nav-text-hover;
+    }
+    a.selected {
+      color: $nav-text-selected;
+    }
   }
 }
 
+
+/* ------ story styles --------- */
 .feature-prime1, .feature-prime2, {
   h1 {
     @include title(2.15rem);
   }
 }
 
-.feature-story{
+.feature-prime2 {
+  display: none;
+}
+
+.feature-story, .story{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -210,58 +247,87 @@ margin-top: 1.5rem;
     @include title(1.5rem);
     margin-top: 0;
   }
-  .bookmark {
+  .bookmark, .more {
     display: inline;
     float: right;
   }
-
 }
 
-.feature-prime2 {
-  display: none;
+.popular-story {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  h2 {
+    @include title(1.65rem);
+    margin-top: 0;
+  }
+  .author {
+    margin-top: 1rem;
+  }
 }
-div.see-featured {
+
+.pop-story-number {
+  font-size: 2.65rem;
+  color: lighten($default-text-color, 35%);
+  margin-right: 1rem;
+  position: relative;
+  top: -0.25em;
+}
+
+/* --- general styles ----- */
+
+.author {
+  color: $author-color;
+  margin-top: 1.5rem;
+}
+.updated {
+  margin-top: 0;
+  .svgIcon-use {
+    position: relative;
+    top: 3px;
+  }
+}
+
+.see-more {
   p {
     color: $accent-color;
     text-transform: uppercase;
     letter-spacing: .1em;
   }
 }
-div.story-list {
-  /* @include border(#ff0); */
-  height: 1800px;
+.story-list, .side-panel {
+  margin-top: 2rem;
 }
-div.collections {
-  @include border(#0f0);
-  height: 410px;
-}
-div.side-panel {
-  @include border(#0ff);
+.collections {
+
 }
 
-.see-featured {
-  border-bottom: $border;
+.see-more {
   width: 100%;
   text-align: left;
+}
+
+.category {
+  color: $default-text-color;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 
 // MEDIA QUERIES
 
 
-@media screen and (min-width: 506px) {
-
-}
-
 @media screen and (min-width: 769px) {
-  div.logo-medium {
+  .logo-medium {
     display: block;
   }
-  div.logo-m {
+  .logo-m {
     display: none;
   }
-  div.account-meta {
-    div.bookmark {
+  .account-meta {
+    .bookmark {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -269,10 +335,14 @@ div.side-panel {
       width: 40px;
     }
   }
+  .story h2, h2.callout {
+      @include title(2rem);
+      margin-top: 0;
+  }
 }
 
 @media screen and (min-width: 680px) {
-  .feature-panel, .collections {
+  .feature-panel{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -298,7 +368,7 @@ div.side-panel {
 }
 
 @media screen and (min-width: 860px) {
-  .feature-panel, .story-panel, .collections {
+  .feature-panel, .story-panel{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -307,7 +377,10 @@ div.side-panel {
   .feature-prime1, .feature-story-panel, .story-list, .side-panel {
     @include feature-story-layout;
   }
-
+  .side-panel {
+    width: 540px;
+    margin-left: 5rem;
+  }
 }
 
 @media screen and (min-width: 1032px) {
@@ -315,7 +388,7 @@ div.side-panel {
    width: 1025px;
    margin: 0 auto 0 auto;
  }
-   .feature-panel, .story-panel, .collections {
+   .feature-panel, .story-panel{
      display: flex;
      flex-flow: row nowrap;
      justify-content: space-between;
@@ -325,10 +398,21 @@ div.side-panel {
      @include feature-story-layout;
    }
 
-   .see-featured {
+   .see-more {
      border-bottom: $border;
      width: 100%;
      text-align: right;
    }
+
+   .blurb {
+     .blurb-top {
+       background-color: $blurb-color;
+
+     }
+     .blurb-bg {
+       background-color: $blurb-bg-color;
+     }
+   }
+
 
  }
